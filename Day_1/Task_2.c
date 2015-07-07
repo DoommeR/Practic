@@ -29,7 +29,6 @@ using namespace std;
 				cout << "Child_Start...\n";
 				
 				close(fd[0]);
-				close(STDOUT_FILENO);
 				dup2(fd[1],STDOUT_FILENO);	
 				ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 				
