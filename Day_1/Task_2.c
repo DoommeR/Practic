@@ -25,13 +25,15 @@ using namespace std;
 			case 0: //child
 				int ex;
 				char str[1];
+				
 				cout << "Child_Start...\n";
+				
 				close(fd[0]);
 				dup2(fd[1],STDOUT_FILENO);	
 				ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 				
 				if (ex == -1) perror("execl");
-				cout << "Child_Finished!\n";
+				cout << "Child_Finished!\n"; //не выполняется? 0_о
 				
 				exit(EXIT_SUCCESS);
 			return 0;   
