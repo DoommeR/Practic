@@ -2,9 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 #define NUM_THREADS 2
 char password[128]="";
+char password_OK[128]="hi";
+
 
 void *Get_Password(void *num)
 {
@@ -19,9 +22,8 @@ void *Get_Password(void *num)
 
 void *Recognize_Password(void *num)
 {
-	
-	printf("lalala\n");
-	
+	if (strcmp (password, password_OK)==0) printf("OK!\n");
+	else printf("Incorrect!\n");
 }
 
 int main(int argc, char *argv[])
@@ -39,7 +41,7 @@ int main(int argc, char *argv[])
 			printf("ERROR; thread number  %d\n", rc);
 			exit(-1);
 		}
-	sleep(15);
+	sleep(10);
 	rc2= pthread_create(&threads[1], NULL, Recognize_Password, (void *)t);
 	if (rc2)
 		{
