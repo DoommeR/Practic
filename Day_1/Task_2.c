@@ -33,7 +33,7 @@ using namespace std;
 				ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 				
 				if (ex == -1) perror("execl");
-				cout << "Child_Finished!\n"; //не выполняется? 0_о
+				cout << "Child_Finished!\n"; //Its not working 0_о
 				
 				exit(EXIT_SUCCESS);
 			return 0;   
