@@ -8,20 +8,21 @@
 char password[128]="";
 char password_OK[128]="hi";
 
-
 void *Get_Password(void *num)
 {
     int i=0;
     int str;
-
 	printf("enter password: ");
 	while ((str = getchar ( )) != '\n') 
 		password [i++] = str;
 	printf("\n You entered: %s\n", password);
+	
 }
 
 void *Recognize_Password(void *num)
-{
+{	
+	//while (password=="") {sleep(1);}
+	while (strcmp (password, "")==0) sleep(1);
 	if (strcmp (password, password_OK)==0) printf("OK!\n");
 	else printf("Incorrect!\n");
 }
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
 			printf("ERROR; thread number  %d\n", rc);
 			exit(-1);
 		}
-	sleep(10);
+		
 	rc2= pthread_create(&threads[1], NULL, Recognize_Password, (void *)t);
 	if (rc2)
 		{
