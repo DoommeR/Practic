@@ -4,17 +4,15 @@
 #include <unistd.h>
 
 #define NUM_THREADS 2
-int control=1;
 
-void *plus(void *num)
+
+void *Get_Password(void *num)
 {
-	control++;
 	printf("Control+ = %d\n", control);
 }
 
-void *minus(void *num)
+void *Recognize_Password(void *num)
 {
-	control--;
 	printf("Control- = %d\n", control);
 }
 
@@ -26,17 +24,16 @@ int main(int argc, char *argv[])
 	long t;
 	
 	//printf("In main: creating thread %ld\n", t);
-	//sleep(10);
-
 	
-	rc= pthread_create(&threads[0], NULL, plus, (void *)t);
+	rc= pthread_create(&threads[0], NULL, Get_Password, (void *)t);
 	if (rc)
 		{
 			printf("ERROR; thread number  %d\n", rc);
 			exit(-1);
 		}
-	rc2= pthread_create(&threads[1], NULL, minus, (void *)t);
-	if (rc)
+	sleep(30);
+	rc2= pthread_create(&threads[1], NULL, Recognize_Password, (void *)t);
+	if (rc2)
 		{
 			printf("ERROR; thread number  %d\n", rc);
 			exit(-1);
@@ -50,7 +47,7 @@ int main(int argc, char *argv[])
 	{
 
 		pthread_join(threads[t], NULL);
-		//printf("thread #%ld finished\n",t);
+		printf("thread #%ld finished\n",t);
 	}
 
 	return 0;
