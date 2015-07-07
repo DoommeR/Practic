@@ -4,16 +4,24 @@
 #include <unistd.h>
 
 #define NUM_THREADS 2
-
+char password[128]="";
 
 void *Get_Password(void *num)
 {
-	printf("Control+ = %d\n", control);
+    int i=0;
+    int str;
+
+	printf("enter password: ");
+	while ((str = getchar ( )) != '\n') 
+		password [i++] = str;
+	printf("\n You entered: %s\n", password);
 }
 
 void *Recognize_Password(void *num)
 {
-	printf("Control- = %d\n", control);
+	
+	printf("lalala\n");
+	
 }
 
 int main(int argc, char *argv[])
@@ -31,7 +39,7 @@ int main(int argc, char *argv[])
 			printf("ERROR; thread number  %d\n", rc);
 			exit(-1);
 		}
-	sleep(30);
+	sleep(15);
 	rc2= pthread_create(&threads[1], NULL, Recognize_Password, (void *)t);
 	if (rc2)
 		{

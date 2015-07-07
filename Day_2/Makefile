@@ -1,4 +1,4 @@
-main=Task_1.c
+main=Task_2.c
 
 all: $(main)
 	gcc $(main) -lpthread -o task.o
