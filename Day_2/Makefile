@@ -1,6 +1,15 @@
-main=Task_2.c
+all: Task_1.o Task_2.o Task_1 Task_2
+Task_1.o: Task_1.c 
+	gcc -c -o Task_1.o Task_1.c -lpthread
 
-all: $(main)
-	gcc $(main) -lpthread -o task.o
+Task_2.o: Task_2.c
+	gcc -c -o Task_2.o Task_2.c -lpthread
+
+Task_1:
+	gcc -lpthread -o Task1 Task_1.o
+
+Task_2:
+	gcc -lpthread -o Task2 Task_2.o
+
 clean:
 	-rm -f *.o
