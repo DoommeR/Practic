@@ -4,14 +4,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-int main
+int main()
 {
 	int sock, listener;
 	struct sockaddr_in addr;
-	char buff[1024];
+	char buf[1024];
 	int bytes_read;
 
-	listner = socket(AF_INET, SOCK_STREAM, 0);
+	listener = socket(AF_INET, SOCK_STREAM, 0);
 	if (listener <0)
 	{
 		perror("socket");
@@ -19,18 +19,18 @@ int main
 	}
 
 	addr.sin_family= AF_INET;
-	addr.sim_port = htons(3425);
-	addr.sin_addr,sin_addr= htonl(INADDR_ANY);
-	if(bind(listner, (struct sockaddr*)&addr, sizeof(addr))<0)
+	addr.sin_port = htons(3425);
+	addr.sin_addr.s_addr= htonl(INADDR_ANY);
+	if(bind(listener, (struct sockaddr*)&addr, sizeof(addr))<0)
 	{
 		perror("bind");
 		return 1;
 	}
 
-	listen(listner,1);
+	listen(listener,1);
 	while(1)
 	{
-			sock=accept(listner,NULL,NULL);
+			sock=accept(listener,NULL,NULL);
 			if (sock<0)
 			{
 				perror("accept");

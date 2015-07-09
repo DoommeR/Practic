@@ -18,17 +18,20 @@ int main()
 	}
 
 	addr.sin_family= AF_INET;
-	addr.sim_port = htons(3425);
-	addr.sin_addr,sin_addr= htonl(INADDR_LOOPBACK);
+	addr.sin_port = htons(3425);
+	addr.sin_addr.s_addr= htonl(INADDR_LOOPBACK);
 
 	if(connect(sock, (struct sockaddr *)&addr, sizeof(addr))<0)
 	{
 		perror("connect");
 		return 1;
 	}
-
-	send(sock, message, sizeof(message), 0);
+	int i;
+	for (i=1; i<100; i++)
+	{
+		send(sock, message, sizeof(message), 0);
+	}
 	close(sock);
-	
+
 	return 0;
 }
