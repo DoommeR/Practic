@@ -36,9 +36,9 @@ int main(int argc, char *argv[])
 			exit(-1);
 		}
 	rc2= pthread_create(&threads[1], NULL, minus, (void *)t);
-	if (rc)
+	if (rc2)
 		{
-			printf("ERROR; thread number  %d\n", rc);
+			printf("ERROR; thread number  %d\n", rc2);
 			exit(-1);
 		}
 
