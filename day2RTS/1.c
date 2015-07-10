@@ -44,6 +44,6 @@ int main(int argc, char *argv[])
 		pthread_join(threads[t], NULL);
 		//printf("thread #%ld finished\n",t);
 	}
-
+//http://habrahabr.ru/post/127278/
 	return 0;
 }
