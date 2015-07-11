@@ -13,7 +13,6 @@ int main(void)
 {
 	int fd;
         char readbuf[800];
-        /* Create the FIFO if it does not exist */
         umask(0);
         mknod(SERVER_FIFO_NAME, S_IFIFO|0666, 0);
 
@@ -21,7 +20,6 @@ int main(void)
         {
                 fd = open(SERVER_FIFO_NAME, O_RDONLY);
 		read(fd, &readbuf, sizeof(readbuf));
-                //fgets(readbuf, 800, fp);
                 printf("Received string: %s\n", readbuf);
                 close(fd);
         }

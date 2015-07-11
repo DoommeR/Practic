@@ -13,16 +13,14 @@ int main(int argc, char *argv[])
     
 	int ex, fd;
 	
-
-    if((fd = open(SERVER_FIFO_NAME, O_WRONLY)) < 0) {
-        perror("fopen");
-        exit(1);
-    }
+	if((fd = open(SERVER_FIFO_NAME, O_WRONLY)) < 0) 
+	{
+	        perror("fopen");
+	        exit(1);
+	}
 	ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 	freopen(SERVER_FIFO_NAME, "w", stdout);
 	
-	//fputs(STDOUT_FILENO, fp);
-    //write(fd,stdout, sizeof(stdout));
-    close(fd);
-    return(0);
+	close(fd);
+	return(0);
 }
