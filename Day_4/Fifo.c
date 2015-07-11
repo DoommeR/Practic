@@ -18,11 +18,11 @@ int main(int argc, char *argv[])
         perror("fopen");
         exit(1);
     }
-	
-	//freopen(FIFO_FILE, "w", stdout);
 	ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
+	freopen(SERVER_FIFO_NAME, "w", stdout);
+	
 	//fputs(STDOUT_FILENO, fp);
-    write(fd,stdout, sizeof(stdout));
+    //write(fd,stdout, sizeof(stdout));
     close(fd);
     return(0);
 }
