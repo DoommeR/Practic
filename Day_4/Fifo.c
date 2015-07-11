@@ -1,28 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <errno.h> 
+#include <sys/types.h> 
 
-#define FIFO_FILE       "MYFIFO"
+#define SERVER_FIFO_NAME "/tmp/sfifo"
+//#define CLIENT_FIFO_NAME "/tmp/cfifo"
 
 int main(int argc, char *argv[])
 {
-    FILE *fp;
-	int ex;
+    
+	int ex, fd;
 	
-    if ( argc != 2 ) {
-        printf("USAGE: fifoclient [string]\n");
-        exit(1);
-    }
 
-    if((fp = fopen(FIFO_FILE, "w")) == NULL) {
+    if((fd = open(SERVER_FIFO_NAME, O_WRONLY)) < 0) {
         perror("fopen");
         exit(1);
     }
 	
-	freopen(FIFO_FILE, "w", stdout);
+	//freopen(FIFO_FILE, "w", stdout);
 	ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 	//fputs(STDOUT_FILENO, fp);
-    fwrite(stdout,sizeof(char), 800,fp);
-    fclose(fp);
+    write(fd,stdout, sizeof(stdout));
+    close(fd);
     return(0);
 }

@@ -2,7 +2,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-
+//с RAW
 int main()
 {
 	char message[]="Hello world!\n";
