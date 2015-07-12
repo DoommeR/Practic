@@ -1,9 +1,10 @@
-Address="./Day_2/"
-.PHONY: project_code
+MODULES = Day_1 Day_2 Day_3
 all:
-	$(MAKE) -C $(Address)
- 
-	
-	
-
+	for dir in $(MODULES); do \
+		(cd $$dir; ${MAKE} all); \
+	done
+clean:
+	for dir in $(MODULES); do \
+		(cd $$dir; ${MAKE} clean); \
+	done
 
