@@ -4,15 +4,13 @@
 
 #define NUM_THREADS 3
 
-
 int count=1;
-//int thread_ids[3];
 
 pthread_mutex_t count_mutex;
 pthread_mutex_t main_mutex;
 pthread_cond_t count_threshold_cv;
-
 pthread_cond_t main_threshold;
+
 void *counter(void *t)
 {
 	long my_id=(long)t;
