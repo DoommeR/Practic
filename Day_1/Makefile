@@ -13,3 +13,4 @@ Task_2: Task_2.o
 
 clean:
 	-rm -f *.o
+
