@@ -6,7 +6,6 @@
 #include <sys/types.h> 
 
 #define SERVER_FIFO_NAME "/tmp/sfifo"
-//#define CLIENT_FIFO_NAME "/tmp/cfifo"
 
 int main(int argc, char *argv[])
 {
@@ -18,9 +17,9 @@ int main(int argc, char *argv[])
 	        perror("fopen");
 	        exit(1);
 	}
-	ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
-	freopen(SERVER_FIFO_NAME, "w", stdout);
 	
+	freopen(SERVER_FIFO_NAME, "w", stdout);
+	ex = execl("/bin/ls","ls", "-l", "/tmp/", NULL);
 	close(fd);
 	return(0);
 }
