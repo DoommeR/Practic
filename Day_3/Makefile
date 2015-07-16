@@ -1,4 +1,4 @@
-all: UnitTest Broadcast
+all: Broadcast
 
 UnitTest.o: UnitTest.c
 	gcc -c -o UnitTest.o UnitTest.c

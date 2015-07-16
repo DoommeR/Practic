@@ -1,0 +1,17 @@
+#include <QtGui>
+
+
+int main(int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	QLabel lbl("Hello World!");
+	/*QWidget wgt;
+	QpushButton* pcmdNormal = new QpushButton("Просто кнопка");
+    	QVBoxLayout* pvbxLayout = new QVBoxLayout;
+    	pvbxLayout->addWidget(pcmdNormal);    
+	wgt.setLayout(pvbxLayout);
+	*/wgt.setWindowTitle(tr("Hi!"));	
+	lbl.show();
+	//wgt.show();
+	return app.exec();
+}
